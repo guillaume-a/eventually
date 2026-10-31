@@ -1,0 +1,29 @@
+deptrac:
+    paths:
+        - ./src
+    layers:
+        -
+            name: Domain
+            collectors:
+                -
+                    type: classNameRegex
+                    value: '#^Codr\\Eventually\\Domain\\#'
+        -
+            name: Application
+            collectors:
+                -
+                    type: classNameRegex
+                    value: '#^Codr\\Eventually\\Application\\#'
+        -
+            name: Testing
+            collectors:
+                -
+                    type: classNameRegex
+                    value: '#^Codr\\Eventually\\Testing\\#'
+    ruleset:
+        Domain: ~
+        Application:
+            - Domain
+        Testing:
+            - Domain
+            - Application

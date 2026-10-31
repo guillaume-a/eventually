@@ -1,0 +1,60 @@
+{
+    "name": "codr/eventually",
+    "description": "Framework-agnostic event sourcing and CQRS core: aggregates, event store and snapshot ports, buses, projectors and views.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["event-sourcing", "cqrs", "ddd", "aggregate", "projection"],
+    "authors": [
+        {
+            "name": "Guillaume Aveline",
+            "email": "917449+guillaume-a@users.noreply.github.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=8.5",
+        "symfony/deprecation-contracts": "^3.6"
+    },
+    "require-dev": {
+        "deptrac/deptrac": "^4.7.2",
+        "friendsofphp/php-cs-fixer": ">=3.95.27",
+        "phpstan/phpstan": ">=2.3.4",
+        "phpunit/phpunit": "^12.5.42",
+        "roave/backward-compatibility-check": "^8.0"
+    },
+    "conflict": {
+        "symfony/symfony": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Codr\\Eventually\\": "src/"
+        },
+        "exclude-from-classmap": [
+            "/tests/"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Codr\\Eventually\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "phpstan": "phpstan analyse",
+        "cs-check": "php-cs-fixer fix --dry-run --diff",
+        "cs-fix": "php-cs-fixer fix",
+        "deptrac": "deptrac analyse",
+        "test": "phpunit",
+        "bc-check": "roave-backward-compatibility-check",
+        "check": [
+            "@composer validate",
+            "@phpstan",
+            "@cs-fix",
+            "@deptrac",
+            "@test"
+        ]
+    }
+}
